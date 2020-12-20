@@ -1,11 +1,12 @@
 from django.views.generic import View
-from django.shortcuts import render
-from .models import Profile, Work, Experience, Education, Skill
+from django.shortcuts import render, redirect
+from .models import Profile, Work, Experience, Education, Skill, Concept
 import json
 from django.conf import settings
 from django.core.mail import BadHeaderError, EmailMessage
 from django.http import HttpResponse
 import textwrap
+from .forms import ContactForm
 
 
 class IndexView(View):
@@ -13,6 +14,7 @@ class IndexView(View):
         profile_data = Profile.objects.all()
         if profile_data.exists():
             profile_data = profile_data.order_by("-id")[0]
+        concept_data = Concept.objects.order_by("-id")
         work_data = Work.objects.order_by("-id")
         skill_master_data = Skill.objects.all()
         skill_name = []
@@ -26,6 +28,7 @@ class IndexView(View):
         }
         return render(request, 'app/index.html', {
             'profile_data': profile_data,
+            'concept_data': concept_data,
             'work_data': work_data,
             'skill_data': json.dumps(skill_data),
         })
@@ -100,8 +103,12 @@ class ContactView(View):
             except BadHeaderError:
                 return HttpResponse('無効なヘッダが検出されました。')
 
-            return redirect('index')
+            return redirect('thanks')
 
         return render(request, 'app/contact.html', {
             'form': form
         })
+
+class ThanksView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'app/thanks.html')

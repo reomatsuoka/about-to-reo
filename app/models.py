@@ -18,6 +18,13 @@ class Profile(models.Model):
     def __str__(self):
         return self.name
 
+class Concept(models.Model):
+    title = models.CharField("タイトル", max_length=100)
+    description = models.TextField("説明")
+
+    def __str__(self):
+        return self.title
+
 class Work(models.Model):
     title = models.CharField("タイトル", max_length=100)
     image = models.ImageField(upload_to='images', verbose_name="イメージ画像")

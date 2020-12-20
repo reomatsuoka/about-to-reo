@@ -2,71 +2,97 @@
 
 {% block content %}
 
-<div class="card top d-flex flex-column justify-content-end mb-4">
+<div id="slides" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#slides" data-slide-to="0" class="active"></li>
+        <li data-target="#slides" data-slide-to="1"></li>
+        <li data-target="#slides" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner" id="home">
+        <div class="carousel-caption">
+            <h1 class="display-2 font-italic">{{ profile_data.title }}</h1>
+        </div>
+        <div class="carousel-item active">
+            <img src="{{ profile_data.topimage.url }}">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ profile_data.topimage.url }}">
+        </div>
+    </div>
+</div>
+
+<!-- <div class="card top d-flex flex-column justify-content-end mb-4">
     <img src="{{ profile_data.topimage.url }}" alt="">
     <div class="overlay text-white p-5">
         <h1 class="title">{{ profile_data.title }}</h1>
         <h5 class="subtitle">{{ profile_data.subtitle }}</h5>
     </div>
-</div>
+</div> -->
 
-<h1 class="mb-5 text-center">Works</h1>
-<hr class="mb-5">
-<div class="row mb-5">
-    {% for work in work_data %}
-        <div class="col-6 col-md-3 mb-3">
-            <div class="card work-thumbnail">
-                {% if work.thumbnail %}
+<div class="jumbotron jumbotron-fluid text-center" style="background: url(img/tya.jpg) fixed no-repeat"></div>
+    <div class="container">
+        <h1 class="concept-title text-secondary text-center">CONCEPT</h1>
+        <h5>{{ concept_data.title }}</h5>
+        <p class="mb-3 small text-center">{{ concept_data.description|linebreaksbr }}</p>
+        
+        <h1 class="my-5 text-center">Works</h1>
+        <hr class="mb-5">
+        <div class="row mb-5">
+            {% for work in work_data %}
+            <div class="col-6 col-md-3 mb-3">
+                <div class="card work-thumbnail">
+                    {% if work.thumbnail %}
                     <img class="work-img" src="{{ work.thumbnail.url }}" alt="">
-                {% else %}
-                <img class="work-img" src="{{ work.image.url }}" alt="">
-                {% endif %}
-                <div class="work-title text-center">
-                    <p class="mb-0">{{ work.title }}</p>
+                    {% else %}
+                    <img class="work-img" src="{{ work.image.url }}" alt="">
+                    {% endif %}
+                    <div class="work-title text-center">
+                        <p class="mb-0">{{ work.title }}</p>
+                    </div>
+                    <a class="stretched-link work" href="{% url 'detail' work.id %}"></a>
                 </div>
-                <a class="stretched-link work" href="{% url 'detail' work.id %}"></a>
             </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-</div>
-
-<h1 class="mb-5 text-center">Skill Level</h1>
-<hr class="mb-5">
-<canvas class="col-12 skill-level mb-5" id="myRaderChart" height="400"></canvas>
-{% block extra_js %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-{% endblock %}
-
-<script>
-    const ctx = document.getElementById("myRaderChart");
-    // 文字列(skill_data)をJSON.parseでJSON形式に変換する
-    const skill_data = JSON.parse('{{ skill_data|safe }}');
-    const myRadarChart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: skill_data.name,
-            datasets: [{
-                label: '比重',
-                data: skill_data.level,
-                backgroundColor: "rgba(255,100,0,0.6)",
-                borderColor: "rgb(255,100,0)",
-                borderWidth: 1,
-                pointBackgroundColor: 'RGB(255,50,0)'
-            }]
-        },
-        options: {
-            scale: {
-                ticks: {
-                    suggestedMin: 0,
-                    suggestedMax: 5,
-                    stepSize: 1,
-                    callback: function (value, index, values) {
-                        return ""
+        
+        <h1 class="my-5 text-center">Skill Level</h1>
+        <hr class="mb-5">
+        <canvas class="col-12 skill-level mb-5" id="myRaderChart" height="400"></canvas>
+        {% block extra_js %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+        {% endblock %}
+        
+        <script>
+            const ctx = document.getElementById("myRaderChart");
+            // 文字列(skill_data)をJSON.parseでJSON形式に変換する
+            const skill_data = JSON.parse('{{ skill_data|safe }}');
+            const myRadarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: skill_data.name,
+                    datasets: [{
+                        label: '比重',
+                        data: skill_data.level,
+                        backgroundColor: "rgba(255,100,0,0.6)",
+                        borderColor: "rgb(255,100,0)",
+                        borderWidth: 1,
+                        pointBackgroundColor: 'RGB(255,50,0)'
+                    }]
+                },
+                options: {
+                    scale: {
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 5,
+                            stepSize: 1,
+                            callback: function (value, index, values) {
+                                return ""
+                            }
+                        }
                     }
                 }
-            }
-        }
-    });
-</script>
+            });
+        </script>
 
+    </div>
 {% endblock %}

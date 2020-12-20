@@ -6,4 +6,5 @@ urlpatterns = [
     path('detail/<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('about/', views.AboutView.as_view(), name='about'),
     path('contact/', views.ContactView.as_view(), name='contact'),
+    path('thanks/', views.ThanksView.as_view(), name='thanks'),
 ]

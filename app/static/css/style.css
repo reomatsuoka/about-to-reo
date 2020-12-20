@@ -1,33 +1,38 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
-body{
+body {
     background: #f1f1f1;
     display: flex;
     flex-flow: column;
     min-height: 100vh;
 }
 
-main{
+main {
     flex: 1;
 }
 
-.navbar-nav{
-    flex-direction: row!important;
+.container{
+    padding: 0;
 }
 
-.nav-color{
+.navbar-nav {
+    flex-direction: row !important;
+}
+
+.nav-color {
     color: black;
 }
 
-.nav-color:hover{
+.nav-color:hover {
     color: #ee6c4d;
 }
 
-.nav-color:after{
+.nav-color:after {
     content: "";
     display: block;
     height: 2px;
@@ -43,14 +48,58 @@ main{
     opacity: 1;
 }
 
-.top img {
+.nav-link{
+    font-size: 1.2rem;
+}
+
+.carousel-inner img {
+    height: 100vh;
     object-fit: cover;
-    height: 500px;
+    width: 100%;
+}
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-30%);
+}
+.carousel-caption h1 {
+    font-size: 600%;
+    text-shadow: 1px 1px 10px black;
+    padding-bottom: 2rem;
+    font-family: "HanziPen TC", sans-serif!important;
+}
+.carousel-caption h3 {
+    font-size: 200%;
+    font-weight: 500;
+    text-shadow: 1px 1px 10px black;
+    padding-bottom: 1rem;
+}
+
+.concept-title{
+    font-size: 8vw;
+    letter-spacing: .3em;
+    text-indent: .3rem;
+    opacity: 0.3;
+    padding-bottom: 1rem;
+}
+/* .concept-subheading{
+    margin-bottom: 2rem;
+    font-size: 2.5vw;
+}
+.concept-text{
+    line-height: 3rem;
+    font-size: 1.4vw;
+} */
+
+/* .top img {
+    width: 100%;
+    object-fit: cover;
+    height: 90vh;
 }
 
 .overlay {
     position: absolute;
-}
+} */
 
 .title {
     font-size: 4rem;
@@ -60,17 +109,17 @@ main{
     font-size: 2rem;
 }
 
-.wirk-thumbnail{
+.work-thumbnail {
     overflow: hidden;
     position: relative;
 }
 
-.work-img{
+.work-img {
     object-fit: cover;
     height: 240px;
 }
 
-.work-title{
+.work-title {
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -84,25 +133,38 @@ main{
     transition: all 0.2s ease-in-out;
 }
 
-.work-thumbnail:hover .work-title{
-    transform:translateY(0px);
+.work-thumbnail:hover .work-title {
+    transform: translateY(0px);
     opacity: 1;
 }
 
-.link-color{
+.link-color {
     color: #ee6c4d;
 }
 
-.link-color:hover{
+.link-color:hover {
     color: #c56c55;
     text-decoration: none;
 }
 
-.avatar img{
+.avatar img {
     max-width: 150px;
     max-height: 150px;
 }
 
-.icon{
+.icon {
     padding: 10px 8px;
+}
+
+.contact {
+    max-width: 500px;
+}
+
+.form-control:focus {
+    border-color: #ee6c4d;
+    box-shadow: none;
+}
+
+.card {
+    border: none;
 }
