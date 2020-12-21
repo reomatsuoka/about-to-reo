@@ -63,3 +63,10 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+
+class Finaly(models.Model):
+    thanks = models.TextField('お礼')
+    final = models.CharField("最後の一文", max_length=100)
+
+    def __str__(self):
+        return self.final

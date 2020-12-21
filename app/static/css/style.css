@@ -12,6 +12,12 @@ body {
     min-height: 100vh;
 }
 
+.jumbotron{
+    background:url(tya.jpg) center no-repeat;
+    background-size: cover;
+}
+
+
 main {
     flex: 1;
 }
@@ -85,11 +91,10 @@ main {
 /* .concept-subheading{
     margin-bottom: 2rem;
     font-size: 2.5vw;
-}
+}*/
 .concept-text{
     line-height: 3rem;
-    font-size: 1.4vw;
-} */
+}
 
 /* .top img {
     width: 100%;
@@ -167,4 +172,8 @@ main {
 
 .card {
     border: none;
+}
+
+.final{
+    font-size: 3rem;
 }

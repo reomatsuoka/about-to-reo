@@ -1,6 +1,6 @@
 from django.views.generic import View
 from django.shortcuts import render, redirect
-from .models import Profile, Work, Experience, Education, Skill, Concept
+from .models import Profile, Work, Experience, Education, Skill, Concept, Finaly
 import json
 from django.conf import settings
 from django.core.mail import BadHeaderError, EmailMessage
@@ -14,7 +14,12 @@ class IndexView(View):
         profile_data = Profile.objects.all()
         if profile_data.exists():
             profile_data = profile_data.order_by("-id")[0]
-        concept_data = Concept.objects.order_by("-id")
+        concept_data = Concept.objects.all()
+        if concept_data.exists():
+            concept_data = Concept.objects.order_by("-id")[0]
+        finaly_data = Finaly.objects.all()
+        if finaly_data.exists():
+            finaly_data = Finaly.objects.order_by("-id")[0]
         work_data = Work.objects.order_by("-id")
         skill_master_data = Skill.objects.all()
         skill_name = []
@@ -31,6 +36,7 @@ class IndexView(View):
             'concept_data': concept_data,
             'work_data': work_data,
             'skill_data': json.dumps(skill_data),
+            'finaly_data': finaly_data,
         })
 
 class DetailView(View):
