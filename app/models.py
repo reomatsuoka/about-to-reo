@@ -7,12 +7,16 @@ class Profile(models.Model):
     name = models.CharField('名前', max_length=100)
     job = models.TextField('仕事')
     introduction = models.TextField('自己紹介')
+    character1 = models.ImageField(upload_to='images', verbose_name='性格１')
+    character2 = models.ImageField(upload_to='images', verbose_name='性格２')
+    character3 = models.ImageField(upload_to='images', verbose_name='性格３')
     github = models.CharField('github', max_length=100, null=True, blank=True)
     twitter = models.CharField('twitter', max_length=100, null=True, blank=True)
     linkedin = models.CharField('linkedin', max_length=100, null=True, blank=True)
     facebook = models.CharField('facebook', max_length=100, null=True, blank=True)
     instagram = models.CharField('instagram', max_length=100, null=True, blank=True)
-    topimage = models.ImageField(upload_to='images', verbose_name='トップ画像')
+    topimage1 = models.ImageField(upload_to='images', verbose_name='トップ画像1')
+    topimage2 = models.ImageField(upload_to='images', verbose_name='トップ画像2')
     subimage = models.ImageField(upload_to='images', verbose_name='サブ画像')
 
     def __str__(self):
@@ -37,25 +41,17 @@ class Work(models.Model):
     def __str__(self):
         return self.title
 
-
-class Experience(models.Model):
-    occupation = models.CharField('職業', max_length=100)
-    company = models.CharField('会社', max_length=100)
+class AboutMe(models.Model):
     description = models.TextField('説明')
-    place = models.CharField('場所', max_length=100)
-    period = models.CharField('期間', max_length=100)
-
-    def __str__(self):
-        return self.occupation
-
-class Education(models.Model):
-    course = models.CharField('コース', max_length=100)
     school = models.CharField('学校', max_length=100)
-    place = models.CharField('場所', max_length=100)
-    period = models.CharField('期間', max_length=100)
+    start = models.CharField('入学', max_length=100)
+    graduate = models.CharField('卒業', max_length=100)
+    occupation = models.CharField('職業', max_length=100)
+    job_place = models.CharField('職場', max_length=100)
+    job_period = models.CharField('入社', max_length=100)
 
     def __str__(self):
-        return self.course
+        return self.school
 
 class Skill(models.Model):
     name = models.CharField("名前", max_length=100)
@@ -70,3 +66,14 @@ class Finaly(models.Model):
 
     def __str__(self):
         return self.final
+
+class Footer(models.Model):
+    tel = models.CharField("電話番号", max_length=100)
+    mail = models.EmailField(max_length=100)
+    address = models.CharField("住所", max_length=100)
+    hour1 = models.CharField("営業時間１", max_length=100)
+    hour2 = models.CharField("営業時間２", max_length=100)
+    hour3 = models.CharField("営業時間３", max_length=100)
+
+    def __str__(self):
+        return self.tel

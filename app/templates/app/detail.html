@@ -1,41 +1,45 @@
 {% extends "app/base.html" %}
+{% load static %}
 
 {% block content %}
-
-<h3 class="mb-4">{{ work_data.title }}</h3>
-<div class="card top mb-4">
-    <img src="{{ work_data.image.url }}" alt="">
-</div>
-
-<div class="row">
-    <div class="col-sm-4 mb-4">
-        <h4 class="mb-3">INFORMATION</h4>
-        <p>
-            <i class="fas fa-laptop-code mr-2"></i>
-            <span class="font-weight-bolder">SKILLS : </span>
-            {{ work_data.skill }}
-        </p>
-        <hr>
-        <p>
-            <i class="fab fa-github mr-2"></i>
-            <span class="font-weight-bolder">GITHUB : </span>
-            {% if work_data.url %}
-                <a class="link-color" href="{{ work_data.url }}" target="_blank">Link</a>
-            {% else %}
-                Private
-            {% endif %}
-        </p>
-        <hr>
-        <p>
-            <i class="far fa-calendar-alt mr-2"></i>
-            <span class="font-weight-bolder">CREATED : </span>
-            {{ work_data.created }}
-        </p>
-        <hr>
+<div class="de jumbotron jumbotron-fluid mb-0" style="background: url({% static 'img/hit_bg.jpg' %}) no-repeat">
+    <div class="container">
+    <h1 class="mb-4">{{ work_data.title }}</h1>
+    <div class="card work-detail-image top mb-5">
+        <a href="{{ work_data.url }}" class="stretched-link detail-btn"><img src="{{ work_data.image.url }}" class="img-fluid" alt=""></a>
     </div>
-    <div class="col-sm-8 mb-5">
-        <h4 class="mb-3">PROJECT DESCRIPTION</h4>
-        <p>{{ work_data.description|linebreaksbr }}</p>
+
+    <div class="row">
+        <div class="col-sm-4 mb-4">
+            <h4 class="mb-3">INFORMATION</h4>
+            <p>
+                <i class="fas fa-laptop-code mr-2"></i>
+                <span class="font-weight-bolder">SKILLS : </span>
+                {{ work_data.skill }}
+            </p>
+            <hr>
+            <p>
+                <i class="fab fa-github mr-2"></i>
+                <span class="font-weight-bolder">GITHUB : </span>
+                {% if work_data.url %}
+                    <a class="link-color" href="{{ work_data.url }}" target="_blank">Link</a>
+                {% else %}
+                    Private
+                {% endif %}
+            </p>
+            <hr>
+            <p>
+                <i class="far fa-calendar-alt mr-2"></i>
+                <span class="font-weight-bolder">CREATED : </span>
+                {{ work_data.created }}
+            </p>
+            <hr>
+        </div>
+        <div class="col-sm-8 mb-5 ">
+            <h4 class="mb-3">PROJECT DESCRIPTION</h4>
+            <p>{{ work_data.description|linebreaksbr }}</p>
+        </div>
+    </div>
     </div>
 </div>
 

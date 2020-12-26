@@ -1,13 +1,12 @@
 from django.views.generic import View
 from django.shortcuts import render, redirect
-from .models import Profile, Work, Experience, Education, Skill, Concept, Finaly
+from .models import Profile, Work, Skill, Concept, Finaly, AboutMe, Footer
 import json
 from django.conf import settings
 from django.core.mail import BadHeaderError, EmailMessage
 from django.http import HttpResponse
 import textwrap
 from .forms import ContactForm
-
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
@@ -17,6 +16,9 @@ class IndexView(View):
         concept_data = Concept.objects.all()
         if concept_data.exists():
             concept_data = Concept.objects.order_by("-id")[0]
+        aboutme_data = AboutMe.objects.all()
+        if aboutme_data.exists():
+            aboutme_data = AboutMe.objects.order_by("-id")[0]
         finaly_data = Finaly.objects.all()
         if finaly_data.exists():
             finaly_data = Finaly.objects.order_by("-id")[0]
@@ -31,12 +33,18 @@ class IndexView(View):
             "name": skill_name,
             "level": skill_level
         }
+        footer_data = Footer.objects.all()
+        if footer_data.exists():
+            footer_data = footer_data.order_by("-id")[0]
+            
         return render(request, 'app/index.html', {
             'profile_data': profile_data,
             'concept_data': concept_data,
+            'aboutme_data': aboutme_data,
             'work_data': work_data,
             'skill_data': json.dumps(skill_data),
             'finaly_data': finaly_data,
+            'footer_data': footer_data,
         })
 
 class DetailView(View):
@@ -44,19 +52,6 @@ class DetailView(View):
         work_data = Work.objects.get(id=self.kwargs['pk'])
         return render(request, 'app/detail.html',{
             'work_data': work_data,
-        })
-
-class AboutView(View):
-    def get(self, request, *args, **kwargs):
-        profile_data = Profile.objects.all()
-        if profile_data.exists():
-            profile_data = profile_data.order_by("-id")[0]
-        experience_data = Experience.objects.order_by("-id")
-        education_data = Education.objects.order_by("-id")
-        return render(request, 'app/about.html', {
-            'profile_data': profile_data,
-            'experience_data': experience_data,
-            'education_data': education_data,
         })
 
 class ContactView(View):

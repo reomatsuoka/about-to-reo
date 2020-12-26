@@ -12,18 +12,17 @@ body {
     min-height: 100vh;
 }
 
-.jumbotron{
-    background:url(tya.jpg) center no-repeat;
-    background-size: cover;
-}
-
-
 main {
     flex: 1;
 }
 
 .container{
     padding: 0;
+}
+
+/* メニューバー部分 */
+.icon {
+    padding: 10px 8px;
 }
 
 .navbar-nav {
@@ -58,6 +57,12 @@ main {
     font-size: 1.2rem;
 }
 
+/* メニュータブでタイトルが隠れてしまう為、padding-topを設定する */
+.display-4{
+    padding-top: 80px;
+}
+
+/* トップ画像部分 */
 .carousel-inner img {
     height: 100vh;
     object-fit: cover;
@@ -81,38 +86,27 @@ main {
     padding-bottom: 1rem;
 }
 
+/* コンセプト部分 */
 .concept-title{
     font-size: 8vw;
     letter-spacing: .3em;
     text-indent: .3rem;
     opacity: 0.3;
     padding-bottom: 1rem;
+    padding-top: 80px;
 }
-/* .concept-subheading{
-    margin-bottom: 2rem;
-    font-size: 2.5vw;
-}*/
 .concept-text{
     line-height: 3rem;
 }
 
-/* .top img {
-    width: 100%;
-    object-fit: cover;
-    height: 90vh;
-}
-
 .overlay {
     position: absolute;
-} */
+} 
 
 .title {
     font-size: 4rem;
 }
-
-.subtitle {
-    font-size: 2rem;
-}
+/* Work部分 */
 
 .work-thumbnail {
     overflow: hidden;
@@ -143,6 +137,11 @@ main {
     opacity: 1;
 }
 
+.work-detail-image img{
+    object-fit: cover;
+    width: 80%;
+}
+
 .link-color {
     color: #ee6c4d;
 }
@@ -152,15 +151,110 @@ main {
     text-decoration: none;
 }
 
+.de{
+    padding-bottom: 0;
+}
+
+
+/* 自己紹介部分 */
+.lead,.me{
+    font-family: "poppins",sans-serif;
+    width:930px;
+    font-size: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+.list-group-item{
+    font-size: 1.7rem;
+    background-color: unset;
+}
+/* .intro-sub{
+    padding-bottom: 2rem;
+    margin-top: -40px;
+} */
+.paiza-photo{
+    max-width: 300px;
+    height: auto;
+}
+
+.introduction{
+    border: unset;
+    padding-bottom: 2rem;
+}
+.in-list{
+    border: unset;
+}
+.img-fluid{
+    width: 600px;
+    padding:0;
+}
+.works-photo{
+    object-fit: cover;
+}
+
+.card{
+    background-color: unset;
+}
+
 .avatar img {
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 200px;
+    max-height: 200px;
 }
 
-.icon {
-    padding: 10px 8px;
+/* SNSアイコン部分 */
+.social a{
+    font-size: 4.5rem;
+    padding:3rem;
+}
+.fa-facebook{
+    color: #3b5998;
+}
+.fa-twitter{
+    color: #00aced;
+}
+.insta_btn .insta{/*アイコンの背景*/
+    position: relative;/*相対配置*/
+    display: inline-block;
+    width: 60px;/*幅*/
+    height: 60px;/*高さ*/
+    background: -webkit-linear-gradient(160deg, #427eff 0%, #f13f79 50%) no-repeat;
+    background: linear-gradient(155deg, #427eff 0%, #f13f79 30%) no-repeat;/*グラデーション①*/
+    overflow: hidden;/*はみ出た部分を隠す*/
+    border-radius: 13px;/*角丸に*/
+}
+.insta_btn .insta:before{/*グラデーションを重ねるため*/
+    content: '';
+    position: absolute;/*絶対配置*/
+    top: 32px;/*ずらす*/
+    left: -15px;/*ずらす*/
+    width: 70px;/*グラデーションカバーの幅*/
+    height: 60px;/*グラデーションカバーの高さ*/
+    background: -webkit-radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+    background: radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);/*グラデーション②*/
+}
+.insta_btn .fa-instagram {/*アイコン*/
+    color: #FFF;/*白に*/
+    position: relative;/*z-indexを使うため*/
+    z-index: 2;/*グラデーションより前に*/
+    font-size: 50px;/*アイコンサイズ*/
+    line-height: 50px;/*高さと合わせる*/
+    top: -30px;
 }
 
+/* ’最後に’の部分 */
+.final{
+    font-size: 3rem;
+}
+
+.point{
+    font-size: 3rem;
+}
+
+.mail{
+    color: rgba(0, 255, 255, 0.8);
+}
+
+/* コンタクトページ部分 */
 .contact {
     max-width: 500px;
 }
@@ -170,10 +264,21 @@ main {
     box-shadow: none;
 }
 
+.con{
+    padding-bottom: 180px;
+    margin-bottom: 0;
+}
+
 .card {
     border: none;
 }
 
-.final{
-    font-size: 3rem;
+/* フッター部分 */
+
+hr.light{
+    border-top: 1px solid black;
 }
+/* 
+.hour{
+    max-width: 400px;
+} */
