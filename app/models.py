@@ -17,6 +17,7 @@ class Profile(models.Model):
     instagram = models.CharField('instagram', max_length=100, null=True, blank=True)
     topimage1 = models.ImageField(upload_to='images', verbose_name='トップ画像1')
     topimage2 = models.ImageField(upload_to='images', verbose_name='トップ画像2')
+    topimage3 = models.ImageField(upload_to='images', verbose_name='トップ画像３')
     subimage = models.ImageField(upload_to='images', verbose_name='サブ画像')
 
     def __str__(self):
