@@ -134,7 +134,7 @@ else:
     env = environ.Env()
     env.read_env(os.path.join(BASE_DIR, 'env'))
 
-    SEACRET_KEY = env('SEACRET_KEY')
+    SECRET_KEY = env('SECRET_KEY')
     ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 # 本番用
