@@ -218,7 +218,7 @@ main {
     font-size: 8vw;
     letter-spacing: .1em;
     text-indent: .3rem;
-    opacity: 0.3;
+    opacity: 0.5;
     padding-bottom: 3rem;
 }
 
@@ -326,7 +326,7 @@ main {
 }
 
 .form-control:focus {
-    border-color: #ee6c4d;
+    border-color: rgb(10, 140, 226);
     box-shadow: none;
 }
 
@@ -338,13 +338,3 @@ main {
 .card {
     border: none;
 }
-
-/* フッター部分 */
-
-hr.light{
-    border-top: 1px solid black;
-}
-/* 
-.hour{
-    max-width: 400px;
-} */
