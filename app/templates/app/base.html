@@ -7,15 +7,18 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,inital-scale=1">
+	<title>About to Reo</title>
+	<link rel="icon" href="{% static 'img/logo2.png' %}">
+	<meta name="description" content="松岡玲央のポートフォリオです。">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">     
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>About to Reo</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}" height=50></a>
 
@@ -25,19 +28,20 @@
 		</div>
 		<div class="collapse navbar-collapse text-monospace" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-4">
-                    <a class="nav-link nav-color" href="/">HOME</a>
-                </li>
-                <li class="nav-item mr-4">
-					<a class="nav-link nav-color" href="/#concept">CONCEPT</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><button class="custom-btn nav-color"><span class="text-secondary">HOME</span></button></a>
 				</li>
-				<li class="nav-item mr-4">
-					<a class="nav-link nav-color" href="/#works">WORKS</a>
+				<li class="nav-item">
+                    <a class="nav-link" href="/#concept"><button class="custom-btn nav-color"><span class="text-secondary">CONCEPT</span></button></a>
 				</li>
-				<li class="nav-item mr-4">
-					<a class="nav-link nav-color" href="/#about">ABOUT</a>
+				<li class="nav-item">
+                    <a class="nav-link" href="/#works"><button class="custom-btn nav-color"><span class="text-secondary">WORKS</span></button></a>
 				</li>
-                    <a class="nav-link nav-color" href="{% url 'contact' %}">CONTACT</a>
+				<li class="nav-item">
+                    <a class="nav-link" href="/#about"><button class="custom-btn nav-color"><span class="text-secondary">ABOUT</span></button></a>
+				</li>
+				<li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}"><button class="custom-btn nav-color"><span class="text-secondary">CONTACT</span></button></a>
                 </li>
             </ul>
         </div>
