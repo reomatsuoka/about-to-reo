@@ -25,150 +25,148 @@
     </div>
 </div>
 
-<div class="jumbotron jumbotron-fluid text-center mb-0" style="background: url({% static 'img/tya.jpg' %}) fixed no-repeat">
-    <div class="container">
-        <h1 class="concept-title text-center" id="concept">CONCEPT</h1>
-        <h3 class="text-center mt-3 mb-5">{{ concept_data.title }}</h3>
-        <h5 class="concept-text my-2 text-center">{{ concept_data.description|linebreaksbr }}</h5>
+<div class="container">
+    <h1 class="concept-title text-center" id="concept">CONCEPT</h1>
+    <h3 class="text-center mt-5 mb-5">{{ concept_data.title }}</h3>
+    <h5 class="concept-text my-2 text-center">{{ concept_data.description|linebreaksbr }}</h5>
 
-        <h1 class="display-4 mb-5 text-center" id="works">Works</h1>
-        <hr class="mb-5">
-        <div class="row mb-5">
-            {% for work in work_data %}
-            <div class="col-6 col-md-3 mb-3 pl-0">
-                <a class="btn btn--circle" href="{% url 'detail' work.id %}">
-                    {% if work.thumbnail %}
-                    <img class="work-img rounded-circle" src="{{ work.thumbnail.url }}" alt="">
-                    {% else %}
-                    <img class="work-img rounded-circle" src="{{ work.image.url }}" alt="">
-                    {% endif %}
-                    <div class="work-title text-center">
-                        <p class="mb-0">{{ work.title }}</p>
-                    </div>
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-
-        <h1 class="display-4 mb-5 text-center">Skill Level</h1>
-        <hr class="mb-5">
-        <canvas class="col-12 skill-level mb-5" id="myRaderChart" height="400"></canvas>
-        {% block extra_js %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-        {% endblock %}
-
-        <script>
-            const ctx = document.getElementById("myRaderChart");
-            // 文字列(skill_data)をJSON.parseでJSON形式に変換する
-            const skill_data = JSON.parse('{{ skill_data|safe }}');
-            const myRadarChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: skill_data.name,
-                    datasets: [{
-                        label: '比重',
-                        data: skill_data.level,
-                        backgroundColor: "rgba(255,100,0,0.8)",
-                        borderColor: "rgb(255,100,0)",
-                        borderWidth: 2,
-                        pointRadius: 3,
-                        pointBackgroundColor: 'RGB(255,50,0)'
-                    }]
-                },
-                options: {
-                    scale: {
-                        ticks: {
-                            suggestedMin: 0,
-                            suggestedMax: 5,
-                            stepSize: 1,
-                            callback: function (value, index, values) {
-                                return ""
-                            }
-                        },
-                        pointLabels: {       // 軸のラベル（"Python"など）
-                            fontSize: 18,         // 文字の大きさ
-                            fontColor: "black",    // 文字の色
-                        },
-                        angleLines: {        // 軸（放射軸）
-                            display: true,
-                            color: "black"
-                        },
-                        gridLines: {         // 補助線（目盛の線）
-                            color: "black"
-                        }
-                    },
-                    legend: {
-                        position: 'top',  //タイトルの設定
-                        labels: {
-                            fontSize: 20,
-                            fontColor: "black",
-                            padding: 10
-                        }
-                    },
-                }
-            });
-        </script>
-        <div class="padding text-monospace" id="about">
-            <div class="row welcome text-center">
-                <div class="col-12">
-                    <h1 class="display-4 mb-5">About</h1>
+    <h1 class="display-4 mb-5 text-center" id="works">Works</h1>
+    <hr class="mb-5">
+    <div class="row mb-5">
+        {% for work in work_data %}
+        <div class="col-3 col-md-3 mb-3">
+            <a class="work-img-place btn p-0" href="{% url 'detail' work.id %}">
+                {% if work.thumbnail %}
+                <img class="work-img" src="{{ work.thumbnail.url }}" alt="">
+                {% else %}
+                <img class="work-img" src="{{ work.image.url }}" alt="">
+                {% endif %}
+                <div class="work-title text-center">
+                    <p class="mb-0">{{ work.title }}</p>
                 </div>
-                <hr>
-                <h5 class="col-12 intro-sub text-center">{{ aboutme_data.description|linebreaksbr }}</h5>
-
-                <div class="col-12">
-                    <h3 class="display-4 text-left mb-4">Career</h3>
-                    <ul class="list-group list-group-flush text-secondary text-left mb-4">
-                        <li class="list-group-item">{{ aboutme_data.start }}　{{aboutme_data.school}}を入学</li>
-                        <li class="list-group-item">{{ aboutme_data.graduate }}　{{aboutme_data.school}}を卒業</li>
-                        <li class="list-group-item">{{ aboutme_data.job_period }}　{{aboutme_data.occupation}}に就職</li>
-                        <li class="list-group-item">{{ aboutme_data.job_period }}　{{aboutme_data.occupation}}に就職</li>
-                        <li class="list-group-item">現在に至る。</li>
-                    </ul>
-                </div>
-            </div>
+            </a>
         </div>
-        <h3 class="display-4 text-left mb-5">Character</h3>
-        <div class="card flex-row-reverse text-monospace introduction">
-            <div class="card in-list">
-                <img src="{{ profile_data.character1.url }}" class="img-fluid" alt="...">
-            </div>
-        </div>
-        <div class="card flex-row text-monospace introduction">
-            <div class="card in-list">
-                <img src="{{ profile_data.character2.url }}" class="img-fluid" alt="...">
-            </div>
-        </div>
-        <div class="card flex-row-reverse text-monospace introduction mb-4">
-            <div class="card in-list">
-                <img src="{{ profile_data.character3.url }}" class="img-fluid" alt="...">
-            </div>
-        </div>
-        <div class="avatar text-center">
-            <img class="card-img-top rounded-circle mt-5 mb-3" src="{{ profile_data.subimage.url }}" alt="">
-        </div>
-        <h5 class="concept-text text-center my-4">{{ finaly_data.thanks|linebreaksbr }}</h5>
-        <div class="container text-center mb-4">
-            <i class="point far fa-hand-point-down"></i>　　<i class="point far fa-hand-point-down"></i>　　<i class="point far fa-hand-point-down"></i>
-        </div>
-        <div class="container text-center">
-            <div class="col-12 social padding">
-                <a href="https://www.facebook.com/profile.php?id=100012744996579"><i
-                        class="fab fa-facebook"></i></a>
-                <a href="https://twitter.com/meronnokuma"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/reo37458/?hl=ja" class="insta_btn">
-                    <span class="insta">
-                        <i class="fab fa-instagram"></i>
-                    </span></a>
-                <a href="{% url 'contact' %}"><i class="mail fas fa-envelope"></i></a>
-            </div>
-        </div>
-        <h1 class="final text-center my-5">{{ finaly_data.final}}</h1>
+        {% endfor %}
     </div>
-    <footer class="text-center">
-        <div class="col-12">
-            <p class="mb-0 mt-2">&copy; 2020 Reo Matsuoka</p>
+
+    <h1 class="display-4 mb-5 text-center">Skill Level</h1>
+    <hr class="mb-5">
+    <canvas class="col-12 skill-level mb-5" id="myRaderChart" height="400"></canvas>
+    {% block extra_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    {% endblock %}
+
+    <script>
+        const ctx = document.getElementById("myRaderChart");
+        // 文字列(skill_data)をJSON.parseでJSON形式に変換する
+        const skill_data = JSON.parse('{{ skill_data|safe }}');
+        const myRadarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: skill_data.name,
+                datasets: [{
+                    label: '比重',
+                    data: skill_data.level,
+                    backgroundColor: "rgba(255,100,0,0.8)",
+                    borderColor: "rgb(255,100,0)",
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointBackgroundColor: 'RGB(255,50,0)'
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 5,
+                        stepSize: 1,
+                        callback: function (value, index, values) {
+                            return ""
+                        }
+                    },
+                    pointLabels: {       // 軸のラベル（"Python"など）
+                        fontSize: 18,         // 文字の大きさ
+                        fontColor: "black",    // 文字の色
+                    },
+                    angleLines: {        // 軸（放射軸）
+                        display: true,
+                        color: "black"
+                    },
+                    gridLines: {         // 補助線（目盛の線）
+                        color: "black"
+                    }
+                },
+                legend: {
+                    position: 'top',  //タイトルの設定
+                    labels: {
+                        fontSize: 20,
+                        fontColor: "black",
+                        padding: 10
+                    }
+                },
+            }
+        });
+    </script>
+    <div class="padding text-monospace" id="about">
+        <div class="row welcome text-center">
+            <div class="col-12">
+                <h1 class="display-4 mb-5">About</h1>
+            </div>
+            <hr>
+            <h5 class="col-12 intro-sub text-center">{{ aboutme_data.description|linebreaksbr }}</h5>
+
+            <div class="col-12">
+                <h3 class="display-4 text-center mb-5">Career</h3>
+                <ul class="list-group list-group-flush text-left mb-4">
+                    <li class="list-group-item"><h5>{{ aboutme_data.start }}　{{aboutme_data.school}}を入学</h5></li>
+                    <li class="list-group-item"><h5>{{ aboutme_data.graduate }}　{{aboutme_data.school}}を卒業</h5></li>
+                    <li class="list-group-item"><h5>{{ aboutme_data.job_period }}　{{aboutme_data.occupation}}に就職</h5></li>
+                    <li class="list-group-item"><h5>{{ aboutme_data.job_period }}　{{aboutme_data.occupation}}に就職</h5></li>
+                    <li class="list-group-item"><h5>現在に至る。</h5></li>
+                </ul>
+            </div>
         </div>
-    </footer>
+    </div>
+    <h3 class="display-4 text-center mb-5">Character</h3>
+    <div class="card flex-row-reverse text-monospace introduction">
+        <div class="card in-list">
+            <img src="{{ profile_data.character1.url }}" class="img-fluid" alt="...">
+        </div>
+    </div>
+    <div class="card flex-row text-monospace introduction">
+        <div class="card in-list">
+            <img src="{{ profile_data.character2.url }}" class="img-fluid" alt="...">
+        </div>
+    </div>
+    <div class="card flex-row-reverse text-monospace introduction mb-4">
+        <div class="card in-list">
+            <img src="{{ profile_data.character3.url }}" class="img-fluid" alt="...">
+        </div>
+    </div>
+    <div class="avatar text-center">
+        <img class="card-img-top rounded-circle mt-5 mb-3" src="{{ profile_data.subimage.url }}" alt="">
+    </div>
+    <h5 class="concept-text text-center my-4">{{ finaly_data.thanks|linebreaksbr }}</h5>
+    <div class="container text-center mb-4">
+        <i class="point far fa-hand-point-down"></i>　　<i class="point far fa-hand-point-down"></i>　　<i class="point far fa-hand-point-down"></i>
+    </div>
+    <div class="container text-center">
+        <div class="col-12 social padding">
+            <a href="https://www.facebook.com/profile.php?id=100012744996579"><i
+                    class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/MatsuokaReo"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/reo37458/?hl=ja" class="insta_btn">
+                <span class="insta">
+                    <i class="fab fa-instagram"></i>
+                </span></a>
+            <a href="{% url 'contact' %}"><i class="mail fas fa-envelope"></i></a>
+        </div>
+    </div>
+    <h1 class="final text-center my-5">{{ finaly_data.final}}</h1>
 </div>
+<footer class="text-center">
+    <div class="col-12">
+        <p class="mb-0 mt-2">&copy; 2021 Reo Matsuoka</p>
+    </div>
+</footer>
 {% endblock %}
