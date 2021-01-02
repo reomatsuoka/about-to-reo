@@ -1,9 +1,5 @@
 {% load static %}
 
-<!-- 課題４、画像の圧縮 -->
-<!-- 課題５、メールアドレスのパスワードを漏れない様にする -->
-<!-- 課題６、もっと面白みのあるものを(自分らしく) -->
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -18,9 +14,9 @@
     <title>About to Reo</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}" height=50></a>
+			<a class="navbar-brand" href="/"><img src="{% static 'img/logo.png' %}" height=50></a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 				<span class="navbar-toggler-icon"></span>
@@ -47,7 +43,7 @@
         </div>
     </nav>
 
-    <main class="bg-white">
+    <main>
         {% block content %}
         {% endblock %}
     </main>

@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #f1f1f1;
+    background: #eeddc8;
     display: flex;
     flex-flow: column;
     min-height: 100vh;
@@ -23,6 +23,10 @@ main {
 /* メニューバー部分 */
 .icon {
     padding: 10px 8px;
+}
+
+.navbar{
+    background-color: #eeddc8;
 }
 
 .navbar-nav {
@@ -138,8 +142,14 @@ main {
     padding-bottom: 1rem;
     padding-top: 80px;
 }
+
+.concept-subtitle{
+    font-size: 2vw;
+}
+
 .concept-text{
     line-height: 3rem;
+    font-size: 1.3vw;
 }
 
 .overlay {
@@ -241,10 +251,9 @@ main {
     padding-top: 1rem;
     padding-bottom: 2rem;
 }
-/* .list-group-item{
-    font-size: 1.7rem;
+.list-group-item{
     background-color: unset;
-} */
+}
 
 .paiza-photo{
     max-width: 300px;

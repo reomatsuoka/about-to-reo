@@ -27,14 +27,14 @@
 
 <div class="container">
     <h1 class="concept-title text-center" id="concept">CONCEPT</h1>
-    <h3 class="text-center mt-5 mb-5">{{ concept_data.title }}</h3>
+    <h3 class="concept-subtitle text-center mt-5 mb-5">{{ concept_data.title }}</h3>
     <h5 class="concept-text my-2 text-center">{{ concept_data.description|linebreaksbr }}</h5>
 
     <h1 class="display-4 mb-5 text-center" id="works">Works</h1>
     <hr class="mb-5">
     <div class="row mb-5">
         {% for work in work_data %}
-        <div class="col-3 col-md-3 mb-3">
+        <div class="col-md-3 col-sm-6 mb-3">
             <a class="work-img-place btn p-0" href="{% url 'detail' work.id %}">
                 {% if work.thumbnail %}
                 <img class="work-img" src="{{ work.thumbnail.url }}" alt="">
@@ -127,7 +127,8 @@
             </div>
         </div>
     </div>
-    <h3 class="display-4 text-center mb-5">Character</h3>
+    <h3 class="display-4 text-center mb-4">Character</h3>
+    <hr class="mb-4">
     <div class="card flex-row-reverse text-monospace introduction">
         <div class="card in-list">
             <img src="{{ profile_data.character1.url }}" class="img-fluid" alt="...">
@@ -166,7 +167,7 @@
 </div>
 <footer class="text-center">
     <div class="col-12">
-        <p class="mb-0 mt-2">&copy; 2021 Reo Matsuoka</p>
+        <p class="my-4">&copy; 2021 Reo Matsuoka</p>
     </div>
 </footer>
 {% endblock %}
