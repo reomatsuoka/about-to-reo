@@ -25,10 +25,6 @@ main {
     padding: 10px 8px;
 }
 
-.navbar{
-    background-color: #eeddc8;
-}
-
 .navbar-nav {
     flex-direction: row !important;
 }
