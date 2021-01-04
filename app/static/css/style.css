@@ -18,6 +18,8 @@ main {
 
 .container{
     padding: 0;
+    overflow: scroll;
+    -ms-overflow-style: none;
 }
 
 /* メニューバー部分 */
