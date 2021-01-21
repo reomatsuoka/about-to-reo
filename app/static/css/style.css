@@ -102,11 +102,6 @@ main {
     font-size: 1.2rem;
 }
 
-/* メニュータブでタイトルが隠れてしまう為、padding-topを設定する */
-.display-4{
-    padding-top: 80px;
-}
-
 /* トップ画像部分 */
 .carousel-inner img {
     object-fit: cover;
@@ -133,21 +128,20 @@ main {
 
 /* コンセプト部分 */
 .concept-title{
-    font-size: 8vw;
+    font-size: 9vw;
     letter-spacing: .3em;
-    text-indent: .3rem;
     opacity: 0.5;
     padding-bottom: 1rem;
     padding-top: 80px;
 }
 
 .concept-subtitle{
-    font-size: 2vw;
+    font-size: 3vw;
 }
 
 .concept-text{
-    line-height: 3rem;
-    font-size: 1.3vw;
+    line-height: 50px;
+    font-size: 1.4vw;
 }
 
 .overlay {
@@ -158,6 +152,13 @@ main {
     font-size: 4rem;
 }
 /* Work部分 */
+.description-title h1{
+    font-size: 6vw;
+}
+
+.description-subtitle h2{
+    font-size: 4vw;
+}
 
 .work-thumbnail {
     overflow: hidden;
@@ -206,6 +207,11 @@ main {
     width: 80%;
 }
 
+/* About の部分 */
+.about-text{
+    font-size: 2vw;
+}
+
 .link-color {
     color: black;
 }
@@ -241,6 +247,10 @@ main {
     padding-bottom: 3rem;
 }
 
+.detail-text{
+    font-size: 1.4vw;
+}
+
 /* 自己紹介部分 */
 .lead,.me{
     font-family: "poppins",sans-serif;
@@ -261,6 +271,7 @@ main {
 .introduction{
     border: unset;
     padding-bottom: 2rem;
+    font-size: 6vw;
 }
 .in-list{
     border: unset;
@@ -325,6 +336,16 @@ main {
 /* ’最後に’の部分 */
 .final{
     font-size: 3rem;
+}
+
+.finaly-text{
+    font-size: 1.4vw;
+    line-height: 40px;
+}
+
+.final-thanks{
+    font-size: 3vw;
+    line-height: 20px;
 }
 
 .point{

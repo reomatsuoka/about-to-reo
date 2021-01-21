@@ -28,9 +28,11 @@
 <div class="container">
     <h1 class="concept-title text-center" id="concept">CONCEPT</h1>
     <h3 class="concept-subtitle text-center mt-5 mb-5">{{ concept_data.title }}</h3>
-    <h5 class="concept-text my-2 text-center">{{ concept_data.description|linebreaksbr }}</h5>
+    <h5 class="concept-text mt-2 mb-5 text-center">{{ concept_data.description|linebreaksbr }}</h5>
 
-    <h1 class="display-4 mb-5 text-center" id="works">Works</h1>
+    <div class="description-title">
+        <h1 class="my-3 text-center" id="works">Works</h1>
+    </div>
     <hr class="mb-5">
     <div class="row mb-5">
         {% for work in work_data %}
@@ -49,85 +51,38 @@
         {% endfor %}
     </div>
 
-    <h1 class="display-4 mb-5 text-center">Skill Level</h1>
+    <div class="description-title">
+        <h1 class="display-4 mb-3 text-center">Skill Level</h1>
+    </div>
     <hr class="mb-5">
     <canvas class="col-12 skill-level mb-5" id="myRaderChart" height="400"></canvas>
     {% block extra_js %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     {% endblock %}
 
-    <script>
-        const ctx = document.getElementById("myRaderChart");
-        // 文字列(skill_data)をJSON.parseでJSON形式に変換する
-        const skill_data = JSON.parse('{{ skill_data|safe }}');
-        const myRadarChart = new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: skill_data.name,
-                datasets: [{
-                    label: '比重',
-                    data: skill_data.level,
-                    backgroundColor: "rgba(255,100,0,0.8)",
-                    borderColor: "rgb(255,100,0)",
-                    borderWidth: 2,
-                    pointRadius: 3,
-                    pointBackgroundColor: 'RGB(255,50,0)'
-                }]
-            },
-            options: {
-                scale: {
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 5,
-                        stepSize: 1,
-                        callback: function (value, index, values) {
-                            return ""
-                        }
-                    },
-                    pointLabels: {       // 軸のラベル（"Python"など）
-                        fontSize: 18,         // 文字の大きさ
-                        fontColor: "black",    // 文字の色
-                    },
-                    angleLines: {        // 軸（放射軸）
-                        display: true,
-                        color: "black"
-                    },
-                    gridLines: {         // 補助線（目盛の線）
-                        color: "black"
-                    }
-                },
-                legend: {
-                    position: 'top',  //タイトルの設定
-                    labels: {
-                        fontSize: 20,
-                        fontColor: "black",
-                        padding: 10
-                    }
-                },
-            }
-        });
-    </script>
     <div class="padding text-monospace" id="about">
-        <div class="row welcome text-center">
-            <div class="col-12">
-                <h1 class="display-4 mb-5">About</h1>
-            </div>
-            <hr>
-            <h5 class="col-12 intro-sub text-center">{{ aboutme_data.description|linebreaksbr }}</h5>
+        <div class="col-12 description-title">
+            <h1 class="mb-3 text-center">About</h1>
+        </div>
+        <hr class="mb-5">
+        <h5 class="col-12 about-text text-center mb-5">{{ aboutme_data.description|linebreaksbr }}</h5>
 
-            <div class="col-12">
-                <h3 class="display-4 text-center mb-5">Career</h3>
-                <ul class="list-group list-group-flush text-left mb-4">
-                    <li class="list-group-item"><h5>{{ aboutme_data.start }}　{{aboutme_data.school}}を入学</h5></li>
-                    <li class="list-group-item"><h5>{{ aboutme_data.graduate }}　{{aboutme_data.school}}を卒業</h5></li>
-                    <li class="list-group-item"><h5>{{ aboutme_data.job_period }}　{{aboutme_data.occupation}}に就職</h5></li>
-                    <li class="list-group-item"><h5>{{ aboutme_data.job_period }}　{{aboutme_data.occupation}}に就職</h5></li>
-                    <li class="list-group-item"><h5>現在に至る。</h5></li>
-                </ul>
+        <div class="col-12">
+            <div class="description-subtitle">
+                <h2 class="text-center mb-5">~ Career ~</h2>
             </div>
+            <ul class="list-group list-group-flush text-left mb-4">
+                <li class="list-group-item"><h5>{{ aboutme_data.start }}　{{aboutme_data.school}}を入学</h5></li>
+                <li class="list-group-item"><h5>{{ aboutme_data.graduate }}　{{aboutme_data.school}}を卒業</h5></li>
+                <li class="list-group-item"><h5>{{ aboutme_data.job_period }}　{{aboutme_data.occupation}}に就職</h5></li>
+                <li class="list-group-item"><h5>{{ aboutme_data.job_period }}　{{aboutme_data.occupation}}に就職</h5></li>
+                <li class="list-group-item"><h5>現在に至る。</h5></li>
+            </ul>
         </div>
     </div>
-    <h3 class="display-4 text-center mb-4">Character</h3>
+    <div class="description-subtitle">
+        <h2 class="text-center mb-4">~ Character ~</h2>
+    </div>
     <hr class="mb-4">
     <div class="card flex-row-reverse text-monospace introduction">
         <div class="card in-list">
@@ -147,12 +102,12 @@
     <div class="avatar text-center">
         <img class="card-img-top rounded-circle mt-5 mb-3" src="{{ profile_data.subimage.url }}" alt="">
     </div>
-    <h5 class="concept-text text-center my-4">{{ finaly_data.thanks|linebreaksbr }}</h5>
+    <h5 class="finaly-text text-center my-4">{{ finaly_data.thanks|linebreaksbr }}</h5>
     <div class="container text-center mb-4">
         <i class="point far fa-hand-point-down"></i>　　<i class="point far fa-hand-point-down"></i>　　<i class="point far fa-hand-point-down"></i>
     </div>
     <div class="container text-center">
-        <div class="col-12 social padding">
+        <div class="social padding">
             <a href="https://www.facebook.com/profile.php?id=100012744996579"><i
                     class="fab fa-facebook"></i></a>
             <a href="https://twitter.com/MatsuokaReo"><i class="fab fa-twitter"></i></a>
@@ -163,11 +118,66 @@
             <a href="{% url 'contact' %}"><i class="mail fas fa-envelope"></i></a>
         </div>
     </div>
-    <h1 class="final text-center my-5">{{ finaly_data.final}}</h1>
+    <div class="final-thanks">
+        <h2 class="final text-center my-5">{{ finaly_data.final}}</h2>
+    </div>
 </div>
 <footer class="text-center">
     <div class="col-12">
         <p class="my-4">&copy; 2021 Reo Matsuoka</p>
     </div>
 </footer>
+
+<script>
+    const ctx = document.getElementById("myRaderChart");
+    // 文字列(skill_data)をJSON.parseでJSON形式に変換する
+    const skill_data = JSON.parse('{{ skill_data|safe }}');
+    const myRadarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: skill_data.name,
+            datasets: [{
+                label: '比重',
+                data: skill_data.level,
+                backgroundColor: "rgba(255,100,0,0.8)",
+                borderColor: "rgb(255,100,0)",
+                borderWidth: 2,
+                pointRadius: 3,
+                pointBackgroundColor: 'RGB(255,50,0)'
+            }]
+        },
+        options: {
+            scale: {
+                ticks: {
+                    suggestedMin: 0,
+                    suggestedMax: 5,
+                    stepSize: 1,
+                    callback: function (value, index, values) {
+                        return ""
+                    }
+                },
+                pointLabels: {       // 軸のラベル（"Python"など）
+                    fontSize: 18,         // 文字の大きさ
+                    fontColor: "black",    // 文字の色
+                },
+                angleLines: {        // 軸（放射軸）
+                    display: true,
+                    color: "black"
+                },
+                gridLines: {         // 補助線（目盛の線）
+                    color: "black"
+                }
+            },
+            legend: {
+                position: 'top',  //タイトルの設定
+                labels: {
+                    fontSize: 20,
+                    fontColor: "black",
+                    padding: 10
+                }
+            },
+        }
+    });
+</script>
 {% endblock %}
+

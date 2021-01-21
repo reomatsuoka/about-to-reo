@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="detail-page container">
-    <h1 class="my-5 detail-title text-center">{{ work_data.title }}</h1>
+    <h1 class="mt-5 detail-title text-center">{{ work_data.title }}</h1>
     <div class="row">
         <div class="col-md-8">
             <a href="{{ work_data.url }}" class="stretched-link detail-btn"><img src="{{ work_data.image.url }}"
@@ -17,14 +17,20 @@
                     <div class="card-icon">
                         {% if work_data.url %}
                         <a class="link-color" href="{{ work_data.url }}" target="_blank">
-                        <i class="fab fa-github fa-3x mr-2">GITHUB</i>
+                            <div class="mt-3">
+                                <i class="fab fa-github fa-2x mr-2">GITHUB</i>
+                            </div>
                         </a>
                         {% else %}
-                            <p class="wait">現在、作成中の為しばらくお待ち下さい。</p>
+                            <div class="detail-text">
+                                <p class="wait">現在、作成中の為しばらくお待ち下さい。</p>
+                            </div>
                         {% endif %}
                     </div>
-                    <p class="mt-3">使用したスキル：{{ work_data.skill }}</p>
-                    <p>コメント：{{ work_data.description|linebreaksbr }}</p>
+                    <div class="detail-text">
+                        <p class="mt-3">使用したスキル：{{ work_data.skill }}</p>
+                        <p>コメント：{{ work_data.description|linebreaksbr }}</p>
+                    </div>
                 </div>
 
             </div>
