@@ -99,10 +99,10 @@ except ImportError:
     pass
 
 # ローカル用設定
-if not DEBUG:
-    ALLOWED_HOSTS = ['*']
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# if not DEBUG:
+#     ALLOWED_HOSTS = ['*']
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if DEBUG:
     import environ
