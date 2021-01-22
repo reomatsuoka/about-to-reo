@@ -91,7 +91,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 # デプロイ設定
-DEBUG = True
+DEBUG = False
 
 try:
     from .local_settings import *
@@ -99,12 +99,12 @@ except ImportError:
     pass
 
 # ローカル用設定
-# if not DEBUG:
-#     ALLOWED_HOSTS = ['*']
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 if DEBUG:
+    ALLOWED_HOSTS = ['*']
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if not DEBUG:
     import environ
     env = environ.Env()
     env.read_env(os.path.join(BASE_DIR,'.env'))
